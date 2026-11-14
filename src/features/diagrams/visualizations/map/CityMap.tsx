@@ -48,7 +48,7 @@ export function CityMap({
   };
 
   const countryFills = [
-    { fill: "oklch(from var(--accent-dim) l c h)", opacity: 1 },
+    { fill: "oklch(from var(--pane-fill) l c h)", opacity: 1 },
   ];
 
   // the outlines' coordinates, scaled to the size the map is drawn at
@@ -113,16 +113,8 @@ export function CityMap({
     <>
       <defs>
         <radialGradient id={landId} cx={0.5} cy={0} r={1}>
-          <stop
-            offset={0}
-            stopColor="oklch(from var(--ground) l c h)"
-            stopOpacity={1}
-          />
-          <stop
-            offset={1}
-            stopColor="oklch(from var(--accent-dim) l c h)"
-            stopOpacity={1}
-          />
+          <stop offset={0} stopColor="var(--ground)" stopOpacity={1} />
+          <stop offset={1} stopColor="var(--accent-dim)" stopOpacity={1} />
         </radialGradient>
       </defs>
 
@@ -131,7 +123,7 @@ export function CityMap({
           key={i}
           {...placement}
           fills={everyCountry(fill)}
-          fillOpacity={1}
+          fillOpacity={opacity}
           stroke="none"
           strokeWidth={0}
         />
@@ -140,7 +132,7 @@ export function CityMap({
       <ScandinaviaOrthographic
         {...placement}
         fills={everyCountry("none")}
-        stroke="var(--accent-glow)"
+        stroke="var(--accent-bright)"
         strokeWidth={0.75}
       />
 

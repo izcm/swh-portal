@@ -19,7 +19,7 @@ import {
   type NodesShares,
 } from "./layout";
 
-const wallFill = accent(0.1);
+const wallFill = "var(--pane-fill)";
 const edge = "var(--accent-bright)";
 const faintEdge = "oklch(from var(--accent-bright) l c h / 0.3)";
 
@@ -148,7 +148,7 @@ function NodeBoxes({
                       textAnchor="middle"
                       dominantBaseline="central"
                       fontSize={fontSize}
-                      fill="var(--accent-glow)"
+                      fill="var(--accent)"
                       fillOpacity={0.9}
                     >
                       {label}

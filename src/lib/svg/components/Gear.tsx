@@ -30,15 +30,11 @@ export function Gear({
           cy={center.y - radius * 1.2}
           r={radius * 2.6}
         >
-          <stop offset="0%" stopColor="var(--accent-glow)" stopOpacity={0.8} />
-          <stop
-            offset="50%"
-            stopColor="var(--accent-glow)"
-            stopOpacity={0.65}
-          />
+          <stop offset="0%" stopColor="var(--accent-ink)" stopOpacity={0.8} />
+          <stop offset="50%" stopColor="var(--accent-ink)" stopOpacity={0.65} />
           <stop
             offset="100%"
-            stopColor="var(--accent-glow)"
+            stopColor="var(--accent-ink)"
             stopOpacity={0.45}
           />
         </radialGradient>
@@ -69,7 +65,7 @@ export function Gear({
               d={faceD}
               fillRule="evenodd"
               fill={item.isFront ? frontFill : light}
-              stroke={"var(--accent-glow)"}
+              stroke={"var(--accent-bright)"}
               strokeWidth={item.isFront ? 1.25 : 1}
             />
             {/* decorative ring around the hole, on the front face */}

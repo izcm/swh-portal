@@ -18,7 +18,7 @@ export function GearPair({ className }: { className?: string }) {
       toothLean: deg(20),
       holeRadius,
       holeRingRadius: holeRadius * 1.2,
-      depth: radius * 0.2,
+      depth: radius * 0.15,
       tilt: deg(-10),
     });
   };
@@ -29,7 +29,7 @@ export function GearPair({ className }: { className?: string }) {
     const translateY = 0;
     const drawing = () => (
       <g transform={`translate(${translateX}, ${translateY})`}>
-        <Gear layout={layout} frontFill="var(--accent-ink)" />
+        <Gear layout={layout} frontFill="var(--pane-fill)" />
       </g>
     );
     return { layout, translateX, translateY, drawing };
@@ -42,7 +42,7 @@ export function GearPair({ className }: { className?: string }) {
     const translateY = -40;
     const drawing = () => (
       <g transform={`translate(${translateX}, ${translateY})`}>
-        <Gear layout={layout} frontFill="var(--accent-ink)" />
+        <Gear layout={layout} frontFill="var(--pane-fill)" />
       </g>
     );
     return { layout, translateX, translateY, drawing };

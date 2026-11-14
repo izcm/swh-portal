@@ -47,7 +47,7 @@ export function AutomationDiagram({ className }: { className?: string }) {
       toothLean: deg(15), // knob
       holeRadius,
       holeRingRadius: holeRadius * 1.2, // knob
-      depth: radius * 0.25, // knob
+      depth: radius * 0.2, // knob
       tilt: deg(-20), // knob
     });
   };
@@ -58,7 +58,7 @@ export function AutomationDiagram({ className }: { className?: string }) {
     const translateY = 0; // flush with the top edge
     const drawing = (
       <g transform={`translate(${translateX}, ${translateY})`}>
-        <Gear layout={layout} frontFill="var(--accent-ink)" />
+        <Gear layout={layout} frontFill="var(--pane-fill)" />
       </g>
     );
     return { layout, translateX, translateY, drawing };
@@ -70,7 +70,7 @@ export function AutomationDiagram({ className }: { className?: string }) {
     const translateY = 0;
     const drawing = (
       <g transform={`translate(${translateX}, ${translateY})`}>
-        <Gear layout={layout} frontFill="var(--accent-ink)" />
+        <Gear layout={layout} frontFill="var(--pane-fill)" />
       </g>
     );
     return { layout, translateX, translateY, drawing };
