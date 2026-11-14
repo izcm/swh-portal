@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { cn } from "@/lib/cn";
 import { useLanguage } from "@/lib/context/language";
 
@@ -14,13 +15,19 @@ export function Work() {
   const t = copy[lang];
   const projectList = projects[lang];
 
+  useEffect(() => {
+    const html = document.documentElement;
+    html.classList.add("snap-y", "snap-proximity");
+    return () => html.classList.remove("snap-y", "snap-proximity");
+  }, []);
+
   return (
     <div className="tab-container">
       <header>
         <span className="eyebrow">{t.eyebrow}</span>
         <h1>{t.heading}</h1>
       </header>
-      <div className="min-h-below-nav">
+      <div className="min-h-below-nav sticky top-[calc(var(--nav-height)+4rem)]">
         <div className={cn("flex flex-col", "md:flex-row")}>
           <div
             className={cn(
@@ -86,9 +93,11 @@ export function Work() {
         </div>
       </div>
 
-      {projectList.map((project) => (
-        <Project key={project.id} project={project} />
-      ))}
+      <div className="relative z-10 bg-ground border-t border-line pt-12">
+        {projectList.map((project) => (
+          <Project key={project.id} project={project} />
+        ))}
+      </div>
     </div>
   );
 }

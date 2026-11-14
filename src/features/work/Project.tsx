@@ -18,7 +18,7 @@ export function Project({ project }: { project: ProjectData }) {
   return (
     <section
       id={project.id}
-      className="flex flex-col gap-8 min-h-below-nav scroll-mt-24 mt-6"
+      className="flex flex-col gap-8 min-h-below-nav scroll-mt-36 snap-start"
     >
       <div className="flex flex-col xl:flex-row gap-6">
         {/* TEXT CONTENT */}
@@ -34,9 +34,7 @@ export function Project({ project }: { project: ProjectData }) {
 
           {details.map(({ label, text }, i) => (
             <div key={i} className="flex flex-col gap-2">
-              <span className="eyebrow text-xs tracking-[0.2em]">
-                {label}
-              </span>
+              <span className="eyebrow text-xs tracking-[0.2em]">{label}</span>
               <p className="text-subtle">{text}</p>
             </div>
           ))}
