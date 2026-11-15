@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { RoundIconBtn } from "./RoundIconBtn";
 import { cn } from "@/lib/cn";
 import { useSlides } from "@/lib/useSlides";
+import { SquareIconBtn } from "./SquareIconBtn";
 
 export type CaroselItem = { content: ReactNode; title: string };
 
@@ -140,9 +141,9 @@ export function CaroselControls({
   return (
     <div className="flex gap-6 p-3 items-center justify-evenly">
       <RoundIconBtn
-        onClick={prev}
-        label={labels.previous}
-        className="border border-line"
+        onClick={next}
+        label={labels.next}
+        className="border border-line bg-raised hover:bg-ground"
       >
         <ArrowLeft className="size-5" strokeWidth={1.8} />
       </RoundIconBtn>
@@ -154,7 +155,7 @@ export function CaroselControls({
             className={cn(
               "cursor-pointer rounded border border-transparent p-0.5",
               i !== index && "hover:border-accent/60",
-              i === index && "border border-accent",
+              i === index && "border border-accent hover:",
             )}
             key={i}
           >
@@ -163,7 +164,11 @@ export function CaroselControls({
         ))}
       </div>
 
-      <RoundIconBtn onClick={next} label={labels.next} className="border border-line">
+      <RoundIconBtn
+        onClick={next}
+        label={labels.next}
+        className="border border-line bg-raised hover:bg-ground"
+      >
         <ArrowRight className="size-5" strokeWidth={1.8} />
       </RoundIconBtn>
     </div>

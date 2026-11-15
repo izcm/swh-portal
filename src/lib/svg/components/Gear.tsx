@@ -52,7 +52,7 @@ export function Gear({
                   <path
                     d={d}
                     fill={light}
-                    stroke="oklch(from var(--accent-ink) l c h / 0.35)"
+                    stroke="oklch(from var(--accent-bright) l c h / 0.35)"
                     strokeWidth={1}
                   />
                 </g>

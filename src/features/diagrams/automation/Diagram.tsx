@@ -44,7 +44,7 @@ export function AutomationDiagram({ className }: { className?: string }) {
       // a gear's "module" (2 · radius / teethCount), made taller
       toothHeight: ((2 * radius) / teethCount) * 1.25, // knob
       toothShare: 0.65, // knob
-      toothLean: deg(15), // knob
+      toothLean: deg(20), // knob
       holeRadius,
       holeRingRadius: holeRadius * 1.2, // knob
       depth: radius * 0.2, // knob

@@ -66,7 +66,7 @@ export function Nodes({
         <path
           key={i}
           d={path}
-          stroke="var(--accent-dim)"
+          stroke="var(--accent-bright)"
           strokeWidth={strokeWidth}
           fill="none"
           strokeDasharray="8 12"

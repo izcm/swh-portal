@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { cn } from "@/lib/cn";
 import { useLanguage } from "@/lib/context/language";
 
@@ -15,10 +15,11 @@ export function Work() {
   const t = copy[lang];
   const projectList = projects[lang];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const html = document.documentElement;
-    html.classList.add("snap-y", "snap-proximity");
-    return () => html.classList.remove("snap-y", "snap-proximity");
+    html.classList.add("snap-y", "snap-proximity", "scroll-smooth");
+    return () =>
+      html.classList.remove("snap-y", "snap-proximity", "scroll-smooth");
   }, []);
 
   return (

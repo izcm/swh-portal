@@ -88,7 +88,7 @@ export const projects: Localized<ProjectData[]> = {
       ],
       mediaItems: Array.from({ length: 3 }).map((_, i) => ({
         type: "image" as const,
-        src: `/hubben/hubben_${i + 1}.png`,
+        src: `/hubben/hubben_${i + 1}.svg`,
         alt: "temporary alt",
         title: "Inspection overview",
       })),
@@ -155,7 +155,7 @@ export const projects: Localized<ProjectData[]> = {
       ],
       mediaItems: Array.from({ length: 3 }).map((_, i) => ({
         type: "image" as const,
-        src: `/hubben/hubben_${i + 1}.png`,
+        src: `/hubben/hubben_${i + 1}.svg`,
         alt: "Lorem ipsum",
         title: "Lorem ipsum",
       })),
