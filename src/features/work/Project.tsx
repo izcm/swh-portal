@@ -45,9 +45,9 @@ export function Project({
       id={id}
       className="flex flex-col gap-8 min-h-below-nav scroll-mt-36 snap-start"
     >
-      <div className="flex flex-col lg:flex-row gap-6">
+      <div className="flex flex-col lg:flex-row gap-16">
         {/* TEXT CONTENT */}
-        <div className="lg:max-w-lg flex flex-col gap-6">
+        <div className="lg:max-w-lg min-w-sm flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             <span className="inline-flex gap-2 eyebrow font-mono text-xs">
               {String(index + 1).padStart(2, "0")} <span>/</span>{" "}
@@ -83,7 +83,7 @@ export function Project({
           </span>
         </div>
 
-        <div className="w-full mx-auto lg:max-w-180">
+        <div className="w-full mx-auto lg:max-w-180 self-center">
           <Carosel
             items={mediaItems.map((item, i) => ({
               title: item.title,
