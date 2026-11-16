@@ -1,20 +1,23 @@
-import type { ReactNode } from "react";
+import type { ComponentType, ReactNode, SVGProps } from "react";
 import { cn } from "@/lib/cn";
 
-type Props = {
-  onClick: () => void;
-  label: string;
-  children: ReactNode;
-  className?: string;
-};
+type RoundIconBtnProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+// & {
+//   icon: ComponentType<SVGProps<SVGSVGElement>>;
+// };
 
 // colors derive from currentColor — pass a text-* class to recolor
-export function RoundIconBtn({ onClick, label, children, className }: Props) {
+export function RoundIconBtn({
+  onClick,
+  children,
+  className,
+  ...props
+}: RoundIconBtnProps) {
   return (
     <button
       type="button"
+      {...props}
       onClick={onClick}
-      aria-label={label}
       className={cn(
         "grid size-10 shrink-0 place-items-center rounded-full",
         "bg-current/15 transition-colors hover:bg-current/10",

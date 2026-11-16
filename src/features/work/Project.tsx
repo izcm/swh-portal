@@ -55,7 +55,7 @@ export function Project({
             </span>
             <h2 className="text-5xl font-medium">
               {title}
-              <span className="text-muted">.</span>
+              <span className="text-muted px-1">.</span>
             </h2>
             <span className="text-subtle font-light">{subtitle}</span>
           </div>

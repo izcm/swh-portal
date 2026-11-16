@@ -125,7 +125,6 @@ export function CaroselBar({
             <RoundIconBtn
               key={label}
               onClick={onClick}
-              label={label}
               className="border rounded-sm size-7 border-line bg-raised hover:bg-ground hover:border-accent"
             >
               <Icon className="size-4" strokeWidth={1.8} />

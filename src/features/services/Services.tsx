@@ -1,9 +1,12 @@
 import { Link } from "react-router";
 import { Info } from "lucide-react";
-import { Card } from "@/components/Card";
-import { Reveal } from "@/components/Reveal";
+
 import { cn } from "@/lib/cn";
 import { useLanguage } from "@/lib/context/language";
+
+import { Card } from "@/components/Card";
+import { Reveal } from "@/components/Reveal";
+
 import { ArrowRight } from "./ArrowRight";
 import { copy } from "./data/copy";
 import { services } from "./data/services";

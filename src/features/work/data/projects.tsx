@@ -1,7 +1,7 @@
 import { SvgPlaceholder } from "@/components/SvgPlaceholder";
 import type { Localized } from "@/lib/context/language";
 import type { MediaItem } from "../Showcase";
-import type { TechnicalPart } from "../TechnicalView";
+import type { TechnicalPart } from "../TechnicalParts";
 
 export type ProjectData = {
   id: string;

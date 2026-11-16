@@ -7,7 +7,7 @@ import { useLanguage } from "@/lib/context/language";
 import { RoundIconBtn } from "@/components/RoundIconBtn";
 
 import { copy } from "./data/copy";
-import { TechnicalParts, type TechnicalPart } from "./TechnicalView";
+import { TechnicalParts, type TechnicalPart } from "./TechnicalParts";
 
 export function TechnicalSummary({
   projectId,
@@ -29,17 +29,14 @@ export function TechnicalSummary({
 
       <div
         id={viewId}
-        className="flex flex-col gap-4 md:flex-row md:items-center md:gap-8"
+        className="flex flex-col gap-4 md:flex-row md:items-center md:gap-12"
       >
         <div className="flex flex-col gap-3">
           <span className="inline-flex gap-2 eyebrow font-mono text-xs">
             {String(index + 1).padStart(2, "0")} <span>/</span>{" "}
             {t.technical.eyebrow}
           </span>
-          <h3 className="text-4xl font-medium">
-            {t.technical.heading}
-            <span className="text-muted">.</span>
-          </h3>
+          <h3 className="text-4xl font-medium">{t.technical.heading}</h3>
         </div>
 
         <div className="vertical-line hidden md:block" />
@@ -50,9 +47,9 @@ export function TechnicalSummary({
 
         <RoundIconBtn
           onClick={() => setOpen(!open)}
-          label={t.technical.heading}
+          disabled
           className={cn(
-            "size-12 border border-line bg-raised",
+            "btn size-12 border border-line bg-raised",
             "hover:bg-ground hover:border-accent",
             "self-end md:self-auto md:ml-auto md:mr-8",
           )}

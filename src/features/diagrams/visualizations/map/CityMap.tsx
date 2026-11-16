@@ -70,25 +70,28 @@ export function CityMap({
   const cityDots = (() => {
     // flat see-through circles stacked under the dot, the biggest the faintest
     const rings: Ring[] = [
-      { radius: dotRadius * 2, opacity: 0.12 },
-      { radius: dotRadius * 1.4, opacity: 0.25 },
+      // { radius: dotRadius * 2, opacity: 0.2, blur: dotRadius * 2 },
+      { radius: dotRadius * 2.5, opacity: 0.25 },
       { radius: dotRadius, opacity: 1 },
     ];
 
     // the busy cities: a bigger sharp dot over one big blurred circle
     const busyRings: Ring[] = [
-      { radius: dotRadius * 4, opacity: 0.6, blur: dotRadius * 1.5 },
-      { radius: dotRadius * 1.4, opacity: 1 },
+      { radius: dotRadius * 2, opacity: 0.6, blur: dotRadius * 4 },
+      { radius: dotRadius * 3, opacity: 0.25 },
+      { radius: dotRadius * 1.25, opacity: 1 },
     ];
 
     const veryBusyRings: Ring[] = [
-      { radius: dotRadius * 6, opacity: 0.6, blur: dotRadius * 2 },
-      { radius: dotRadius * 1.8, opacity: 1 },
+      { radius: dotRadius * 3, opacity: 0.6, blur: dotRadius * 5 },
+      { radius: dotRadius * 5, opacity: 0.25 },
+      { radius: dotRadius * 1.5, opacity: 1 },
     ];
 
     const mostBusyRings: Ring[] = [
-      { radius: dotRadius * 6.5, opacity: 0.6, blur: dotRadius * 3 },
-      { radius: dotRadius * 2.2, opacity: 1 },
+      { radius: dotRadius * 4, opacity: 0.6, blur: dotRadius * 4 },
+      { radius: dotRadius * 6, opacity: 0.25 },
+      { radius: dotRadius * 1.5, opacity: 1 },
     ];
 
     const points = Object.values(cities)
@@ -160,7 +163,7 @@ export function CityMap({
                     cx={x}
                     cy={y}
                     r={radius}
-                    fill="color-mix(in oklch, var(--accent), var(--accent-glow))"
+                    fill="var(--accent-ink)"
                     fillOpacity={opacity}
                     filter={
                       blur !== undefined ? `url(#${filterId})` : undefined
