@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import { cn } from "@/lib/cn";
 import { useLanguage } from "@/lib/context/language";
 
@@ -95,8 +95,8 @@ export function Work() {
       </div>
 
       <div className="relative z-10 bg-ground border-t border-line pt-12">
-        {projectList.map((project) => (
-          <Project key={project.id} project={project} />
+        {projectList.map((project, i) => (
+          <Project key={project.id} project={project} index={i} />
         ))}
       </div>
     </div>

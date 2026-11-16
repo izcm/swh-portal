@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 import { useLanguage } from "@/lib/context/language";
 
@@ -8,17 +8,33 @@ import { LightBox } from "@/components/LightBox";
 import { services } from "../services/data/services";
 import { copy } from "./data/copy";
 import type { ProjectData } from "./data/projects";
-import { Showcase } from "./Showcase";
+import { TechnicalSummary } from "./TechnicalSummary";
 
-export function Project({ project }: { project: ProjectData }) {
+export function Project({
+  project: {
+    id,
+    title,
+    subtitle,
+    client,
+    situation,
+    solution,
+    services: serviceIds,
+    mediaItems,
+    technicalParts,
+  },
+  index,
+}: {
+  project: ProjectData;
+  index: number;
+}) {
   const { lang } = useLanguage();
   const t = copy[lang];
   const labels = t.project;
 
   const details = [
-    { label: labels.client, text: project.client },
-    { label: labels.situation, text: project.situation },
-    { label: labels.solution, text: project.solution },
+    { label: labels.client, text: client },
+    { label: labels.situation, text: situation },
+    { label: labels.solution, text: solution },
   ];
 
   const [slideIndex, setSlideIndex] = useState(0);
@@ -26,43 +42,52 @@ export function Project({ project }: { project: ProjectData }) {
 
   return (
     <section
-      id={project.id}
+      id={id}
       className="flex flex-col gap-8 min-h-below-nav scroll-mt-36 snap-start"
     >
       <div className="flex flex-col lg:flex-row gap-6">
         {/* TEXT CONTENT */}
-        <div className="lg:max-w-md flex flex-col gap-6">
+        <div className="lg:max-w-lg flex flex-col gap-6 font-normal">
           <div className="flex flex-col gap-3">
             <span className="inline-flex gap-2 eyebrow font-mono text-xs">
-              {labels.work} <span>/</span> {labels.project}
+              {String(index + 1).padStart(2, "0")} <span>/</span>{" "}
+              {labels.selectedProjects}
             </span>
-            <h2 className="text-5xl">{project.title}</h2>
+            <h2 className="text-5xl font-medium">
+              {title}
+              <span className="text-muted">.</span>
+            </h2>
+            <span className="text-subtle font-light">{subtitle}</span>
           </div>
 
           <div className="horizontal-line" />
 
           {details.map(({ label, text }, i) => (
             <div key={i} className="flex flex-col gap-2 max-w-2xl">
-              <span className="eyebrow text-xs tracking-[0.2em]">{label}</span>
+              <span className="eyebrow text-xs tracking-[0.15em] font-semibold">
+                {label}
+              </span>
               <p className="text-subtle">{text}</p>
             </div>
           ))}
 
           <div className="horizontal-line" />
 
-          <span className="text-sm text-accent-strong">
-            {project.services
-              .map(
-                (id) =>
-                  services[lang].find((service) => service.id === id)?.title,
-              )
-              .join(" · ")}
+          <span className="text-sm text-accent-strong inline-flex gap-3 flex-wrap">
+            {serviceIds.map((id, i) => (
+              <Fragment key={id}>
+                {i > 0 && <span>·</span>}
+                <span>
+                  {services[lang].find((service) => service.id === id)?.title}
+                </span>
+              </Fragment>
+            ))}
           </span>
         </div>
 
-        <div className="w-full mx-auto lg:max-w-150">
+        <div className="w-full mx-auto lg:max-w-180">
           <Carosel
-            items={project.mediaItems.map((item, i) => ({
+            items={mediaItems.map((item, i) => ({
               title: item.title,
               content:
                 item.type === "image" ? (
@@ -98,12 +123,10 @@ export function Project({ project }: { project: ProjectData }) {
           technicalParts={project.technicalParts}
         /> */}
       </div>
-      {/* <div className="bg-raised w-full h-full">
-        <h3 className="text-3xl">Hubben</h3>
-      </div> */}
+      <TechnicalSummary projectId={id} index={index} parts={technicalParts} />
 
       <LightBox
-        items={project.mediaItems}
+        items={mediaItems}
         labels={t.showcase}
         isOpen={openLightBox}
         index={slideIndex}

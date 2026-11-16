@@ -20,11 +20,15 @@ export const copy: Localized<{
     close: string;
   };
   project: {
-    work: string;
-    project: string;
+    selectedProjects: string;
     client: string;
     situation: string;
     solution: string;
+  };
+  technical: {
+    eyebrow: string;
+    heading: string;
+    description: string;
   };
 }> = {
   en: {
@@ -48,11 +52,16 @@ export const copy: Localized<{
       close: "Close",
     },
     project: {
-      work: "Work",
-      project: "Project",
+      selectedProjects: "Selected projects",
       client: "Client",
       situation: "Situation",
       solution: "Solution",
+    },
+    technical: {
+      eyebrow: "Under the surface",
+      heading: "Technical summary",
+      description:
+        "How the application is put together, and how the different parts work together.",
     },
   },
   no: {
@@ -77,11 +86,16 @@ export const copy: Localized<{
       close: "Lukk",
     },
     project: {
-      work: "Arbeid",
-      project: "Prosjekt",
+      selectedProjects: "Utvalgte prosjekter",
       client: "Klient",
       situation: "Situasjonen",
       solution: "Løsningen",
+    },
+    technical: {
+      eyebrow: "Under overflaten",
+      heading: "Teknisk oppsummering",
+      description:
+        "Hvordan applikasjonen er satt sammen, og hvordan de ulike delene fungerer sammen.",
     },
   },
 };

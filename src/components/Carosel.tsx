@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { RoundIconBtn } from "./RoundIconBtn";
 import { cn } from "@/lib/cn";
 import { useSlides } from "@/lib/useSlides";
-import { SquareIconBtn } from "./SquareIconBtn";
 
 export type CaroselItem = { content: ReactNode; title: string };
 
@@ -55,20 +54,16 @@ export function Carosel({
         direction={direction}
         animate={animate}
       />
-      <CaroselCaption
+      <CaroselBar
         figure={labels.figure}
         title={items[index].title}
         index={index}
         count={items.length}
-      />
-      <CaroselControls
-        items={items}
         labels={labels}
-        index={index}
         prev={prev}
         next={next}
-        goTo={goTo}
       />
+      <CaroselThumbnails items={items} index={index} goTo={goTo} />
     </div>
   );
 }
@@ -85,7 +80,7 @@ export function CaroselSlide({
   return (
     <div
       className={cn(
-        "flex-1 self-center rounded-sm overflow-hidden",
+        "flex-1 self-center rounded-lg overflow-hidden",
         animate && direction === "right" && "in-from-right",
         animate && direction === "left" && "in-from-left",
       )}
@@ -95,16 +90,22 @@ export function CaroselSlide({
   );
 }
 
-export function CaroselCaption({
+export function CaroselBar({
   figure,
   title,
   index,
   count,
+  labels,
+  prev,
+  next,
 }: {
   figure: string;
   title: string;
   index: number;
   count: number;
+  labels: { previous: string; next: string };
+  prev: () => void;
+  next: () => void;
 }) {
   return (
     <div>
@@ -112,65 +113,55 @@ export function CaroselCaption({
         <span className="whitespace-nowrap">
           {figure} {pad(index + 1)} – {title}
         </span>
-        <div className="horizontal-line" />
-        <span className="whitespace-nowrap">
+        <span className="whitespace-nowrap ml-auto">
           {pad(index + 1)} / {pad(count)}
         </span>
-      </div>
 
+        <div className="flex gap-2">
+          {[
+            { onClick: prev, label: labels.previous, Icon: ArrowLeft },
+            { onClick: next, label: labels.next, Icon: ArrowRight },
+          ].map(({ onClick, label, Icon }) => (
+            <RoundIconBtn
+              key={label}
+              onClick={onClick}
+              label={label}
+              className="border rounded-sm size-7 border-line bg-raised hover:bg-ground hover:border-accent"
+            >
+              <Icon className="size-4" strokeWidth={1.8} />
+            </RoundIconBtn>
+          ))}
+        </div>
+      </div>
       <div className="horizontal-line mt-2" />
     </div>
   );
 }
 
-export function CaroselControls({
+export function CaroselThumbnails({
   items,
-  labels,
   index,
-  prev,
-  next,
   goTo,
 }: {
   items: CaroselItem[];
-  labels: { previous: string; next: string };
   index: number;
-  prev: () => void;
-  next: () => void;
   goTo: (i: number) => void;
 }) {
   return (
-    <div className="flex gap-6 p-3 items-center justify-evenly">
-      <RoundIconBtn
-        onClick={next}
-        label={labels.next}
-        className="border border-line bg-raised hover:bg-ground"
-      >
-        <ArrowLeft className="size-5" strokeWidth={1.8} />
-      </RoundIconBtn>
-
-      <div className="flex gap-4">
-        {items.map((item, i) => (
-          <div
-            onClick={() => goTo(i)}
-            className={cn(
-              "cursor-pointer rounded border border-transparent p-0.5",
-              i !== index && "hover:border-accent/60",
-              i === index && "border border-accent hover:",
-            )}
-            key={i}
-          >
-            {item.content}
-          </div>
-        ))}
-      </div>
-
-      <RoundIconBtn
-        onClick={next}
-        label={labels.next}
-        className="border border-line bg-raised hover:bg-ground"
-      >
-        <ArrowRight className="size-5" strokeWidth={1.8} />
-      </RoundIconBtn>
+    <div className="flex gap-4">
+      {items.map((item, i) => (
+        <div
+          onClick={() => goTo(i)}
+          className={cn(
+            "cursor-pointer rounded border border-transparent p-0.5",
+            i !== index && "hover:border-accent/60",
+            i === index && "border border-accent hover:",
+          )}
+          key={i}
+        >
+          {item.content}
+        </div>
+      ))}
     </div>
   );
 }

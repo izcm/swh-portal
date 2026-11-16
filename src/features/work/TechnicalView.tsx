@@ -12,7 +12,7 @@ export type TechnicalPart = {
   diagram: ReactNode;
 };
 
-export function TechnicalView({
+export function TechnicalParts({
   parts,
   labels,
 }: {
@@ -47,7 +47,7 @@ export function TechnicalView({
             key={tab}
             isSelected={isSelected}
             onSelect={onSelect}
-            focusOnMount={false}
+            // focusOnMount={false}
             htmlLiElementProps={{ role: "tab", "aria-selected": isSelected }}
             className={cn(
               "flex tracking-wider items-center h-8.5 w-auto px-3 rounded-xl border text-sm whitespace-nowrap transition-colors",

@@ -27,7 +27,9 @@ export default function Nav() {
         className="
           sticky top-0 z-20
           flex items-center gap-6 px-4 py-3
-          backdrop-blur
+          bg-ground
+          after:pointer-events-none after:absolute after:inset-x-0 after:top-full
+          after:h-6 after:bg-linear-to-b after:from-ground after:via-ground/20 after:via-25% after:to-transparent
         "
       >
         <Link to="/" className="text-xl tracking-tight">

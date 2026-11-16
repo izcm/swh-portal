@@ -11,8 +11,8 @@
     "preview": "vite preview",
     "test": "vitest run"
   },
-  "dependencies": {
-    "@a2zb/react": "0.100.2-reset",
+  "dependecies": {
+    "@a2zb/react": "0.100.3-reset",
     "@a2zb/styles": "0.100.1-reset",
     "clsx": "^2.1.1",
     "lucide-react": "^1.41.0",

@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 import { Carosel } from "@/components/Carosel";
 import { LightBox } from "@/components/LightBox";
 
-import { TechnicalView, type TechnicalPart } from "./TechnicalView";
+import { TechnicalParts, type TechnicalPart } from "./TechnicalView";
 
 export type MediaItem =
   | { type: "image"; src: string; alt: string; title: string }
@@ -97,7 +97,7 @@ export function Showcase({
               animate={false}
             />
           ) : (
-            <TechnicalView parts={technicalParts} labels={labels} />
+            <TechnicalParts parts={technicalParts} labels={labels} />
           )}
         </div>
       </div>
