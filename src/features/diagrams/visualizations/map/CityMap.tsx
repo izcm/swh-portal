@@ -163,7 +163,7 @@ export function CityMap({
                     cx={x}
                     cy={y}
                     r={radius}
-                    fill="var(--accent-ink)"
+                    fill="var(--accent-bright)"
                     fillOpacity={opacity}
                     filter={
                       blur !== undefined ? `url(#${filterId})` : undefined
