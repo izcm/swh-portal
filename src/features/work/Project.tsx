@@ -47,7 +47,7 @@ export function Project({
     >
       <div className="flex flex-col lg:flex-row gap-6">
         {/* TEXT CONTENT */}
-        <div className="lg:max-w-lg flex flex-col gap-6 font-normal">
+        <div className="lg:max-w-lg flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             <span className="inline-flex gap-2 eyebrow font-mono text-xs">
               {String(index + 1).padStart(2, "0")} <span>/</span>{" "}
@@ -64,9 +64,7 @@ export function Project({
 
           {details.map(({ label, text }, i) => (
             <div key={i} className="flex flex-col gap-2 max-w-2xl">
-              <span className="eyebrow text-xs tracking-[0.15em] font-semibold">
-                {label}
-              </span>
+              <span className="eyebrow text-xs font-medium">{label}</span>
               <p className="text-subtle">{text}</p>
             </div>
           ))}
