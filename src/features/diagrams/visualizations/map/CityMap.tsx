@@ -1,16 +1,10 @@
 import { Fragment, useId } from "react";
-import { type Point } from "@/lib/svg";
-import {
-  ScandinaviaOrthographic,
-  scandinaviaOrthographicBounds,
-} from "./ScandinaviaOrthographic";
+import { cityMapLayout } from "./cityMapLayout";
+import { ScandinaviaOrthographic } from "./ScandinaviaOrthographic";
 import { cities } from "./scandinaviaCities";
 
 // blur: the circle's feGaussianBlur stdDeviation. not blurred if left out
 type Ring = { radius: number; opacity: number; blur?: number };
-
-const bluerAccent = "oklch(from var(--accent) calc(l - 0.2) c h)";
-const whiterAccent = "oklch(from var(--accent) calc(l + 0.2) c h)";
 
 // scandinavia's land, its coastline and the cities as glowing dots. `height`
 // tall, its top-left at (x, y), turned `rotation` degrees around its middle
@@ -29,9 +23,11 @@ export function CityMap({
 }) {
   const blurId = useId();
 
-  const width =
-    (height * scandinaviaOrthographicBounds.width) /
-    scandinaviaOrthographicBounds.height;
+  const {
+    rotate,
+    transform: mapTransform,
+    toDrawnMap,
+  } = cityMapLayout({ x, y, height, rotation });
 
   const everyCountry = (fill: string) => ({
     norway: fill,
@@ -44,67 +40,46 @@ export function CityMap({
     x,
     y,
     height,
-    transform: `rotate(${rotation}, ${width * 0.5}, ${height * 0.5})`,
+    transform: rotate,
   };
 
   const countryFills = [
     { fill: "oklch(from var(--pane-fill) l c h)", opacity: 1 },
   ];
 
-  // the outlines' coordinates, scaled to the size the map is drawn at
-  const toDrawnMap = ({ x, y }: Point) => {
-    const {
-      x: boundsX,
-      y: boundsY,
-      height: boundsHeight,
-    } = scandinaviaOrthographicBounds;
-    const scale = height / boundsHeight;
-    return { x: (x - boundsX) * scale, y: (y - boundsY) * scale };
-  };
-
-  // the map's spot and rotation, for things drawn on it with toDrawnMap
-  const mapTransform = `translate(${placement.x}, ${placement.y}) ${placement.transform}`;
-
   // the cities' x, y are in the map's own coordinates, so they're scaled to the
   // size it's drawn at
   const cityDots = (() => {
     // flat see-through circles stacked under the dot, the biggest the faintest
-    const rings: Ring[] = [
-      // { radius: dotRadius * 2, opacity: 0.2, blur: dotRadius * 2 },
-      { radius: dotRadius * 2.5, opacity: 0.25 },
-      { radius: dotRadius, opacity: 1 },
-    ];
+    // every busier level adds one more ring outside the last
+    const dot: Ring = { radius: dotRadius, opacity: 1 };
+    const ringStep = dotRadius * 1.5;
 
-    // the busy cities: a bigger sharp dot over one big blurred circle
-    const busyRings: Ring[] = [
-      { radius: dotRadius * 2, opacity: 0.6, blur: dotRadius * 4 },
-      { radius: dotRadius * 3, opacity: 0.25 },
-      { radius: dotRadius * 1.25, opacity: 1 },
-    ];
+    const halo = (level: number): Ring[] =>
+      level > 0
+        ? [
+            {
+              radius: ringStep * level,
+              opacity: 0,
+              blur: ringStep * level,
+            },
+          ]
+        : [];
 
-    const veryBusyRings: Ring[] = [
-      { radius: dotRadius * 3, opacity: 0.6, blur: dotRadius * 5 },
-      { radius: dotRadius * 5, opacity: 0.25 },
-      { radius: dotRadius * 1.5, opacity: 1 },
-    ];
-
-    const mostBusyRings: Ring[] = [
-      { radius: dotRadius * 4, opacity: 0.6, blur: dotRadius * 4 },
-      { radius: dotRadius * 6, opacity: 0.25 },
-      { radius: dotRadius * 1.5, opacity: 1 },
+    const ringsFor = (level: number): Ring[] => [
+      ...halo(level),
+      ...Array.from({ length: level + 1 }, (_, i) => ({
+        radius: dotRadius + ringStep * (i + 1),
+        opacity: 0.3 * 0.75 ** i,
+      })).reverse(),
+      dot,
     ];
 
     const points = Object.values(cities)
       .flat()
-      .map(({ x, y, busy, veryBusy, mostBusy }) => ({
+      .map(({ x, y, level }) => ({
         ...toDrawnMap({ x, y }),
-        rings: mostBusy
-          ? mostBusyRings
-          : veryBusy
-            ? veryBusyRings
-            : busy
-              ? busyRings
-              : rings,
+        rings: ringsFor(level ?? 0),
       }));
 
     return { points };
@@ -117,7 +92,7 @@ export function CityMap({
       <defs>
         <radialGradient id={landId} cx={0.5} cy={0} r={1}>
           <stop offset={0} stopColor="var(--ground)" stopOpacity={1} />
-          <stop offset={1} stopColor="var(--accent-dim)" stopOpacity={1} />
+          <stop offset={1} stopColor="var(--accent)" stopOpacity={1} />
         </radialGradient>
       </defs>
 

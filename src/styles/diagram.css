@@ -8,7 +8,7 @@
   --accent-dim: color-mix(in oklab, var(--accent), var(--ground) 45%);
   /* --accent-ink: oklch(from var(--accent) 0.45 0.085 h); */
   --accent-ink: color-mix(in oklab, var(--accent), var(--ground) 40%);
-  --accent-glow: color-mix(in oklab, var(--accent), white 50%);
+  --accent-glow: color-mix(in oklab, var(--accent), white 35%);
   --accent-bright: color-mix(in oklab, var(--accent), var(--accent-glow));
 }
 

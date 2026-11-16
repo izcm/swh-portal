@@ -5,11 +5,11 @@ import type { Point } from "../../logic";
 export function DebugPoints({
   points,
   radius = 4,
-  color,
+  color = "white",
 }: {
   points: Point[];
   radius?: number;
-  color: string | string[];
+  color?: string | string[];
 }) {
   return (
     <g className="svg-debug">

@@ -35,7 +35,7 @@ export function Services() {
         {serviceList.map((section, i) => (
           <Reveal key={section.id} delay={(i % 2) * 60}>
             <Card className="flex flex-col gap-6 sm:h-90 sm:flex-row">
-              <div className="flex flex-col gap-3 sm:w-2/5">
+              <div className="flex flex-col gap-3 sm:w-2/5 z-20">
                 <span className="eyebrow text-muted text-xs mb-4">{`0${i + 1} / ${section.eyebrow}`}</span>
                 <h2 className="mt-4 text-4xl text-fg">{section.title}</h2>
                 <p className="text-subtle">{section.short}</p>
@@ -52,8 +52,8 @@ export function Services() {
 
               <div
                 className={cn(
-                  "relative z20 order-first h-48 w-full shrink-0 items-center",
-                  "sm:order-0 sm:h-full sm:w-3/5 xl:max-w-80 sm:max-h-65 self-center",
+                  "relative z-10 order-first h-65 w-full shrink-0 px-2 py-2",
+                  "sm:order-0 sm:h-full sm:w-3/5 xl:max-w-75 sm:max-h-65 self-center",
                   section.id === "integrations" && "bg-red",
                 )}
               >

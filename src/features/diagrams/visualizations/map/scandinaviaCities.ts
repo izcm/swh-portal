@@ -3,23 +3,22 @@ type City = {
   region: string;
   x: number;
   y: number;
-  busy?: boolean;
-  veryBusy?: boolean;
-  mostBusy?: boolean;
+  // 0 = normal, higher = busier: one more ring around its dot per level
+  level?: number;
 };
 
 // x, y: where the city is on ScandinaviaOrthographic, in its own coordinates
 // (scandinaviaOrthographicBounds, 600 tall)
 export const cities: { [country: string]: City[] } = {
   norway: [
-    { city: "Stavanger", region: "Rogaland", x: 12, y: 447, mostBusy: true },
+    { city: "Stavanger", region: "Rogaland", x: 12, y: 447, level: 5 },
     { city: "Bergen", region: "Vestland", x: 12, y: 391 },
     { city: "Oslo", region: "Oslo", x: 106, y: 412 },
-    { city: "Trondheim", region: "Trøndelag", x: 102, y: 290, busy: true },
-    { city: "Tromsø", region: "Troms", x: 209, y: 71, busy: true },
+    { city: "Trondheim", region: "Trøndelag", x: 102, y: 290, level: 1 },
+    { city: "Tromsø", region: "Troms", x: 209, y: 71, level: 1 },
   ],
   sweden: [
-    { city: "Stockholm", region: "Stockholm County", x: 237, y: 430, veryBusy: true },
+    { city: "Stockholm", region: "Stockholm County", x: 237, y: 430, level: 2 },
     { city: "Gothenburg", region: "Västra Götaland", x: 129, y: 488 },
     // { city: "Malmö", region: "Skåne", x: 153, y: 565 },
     { city: "Umeå", region: "Västerbotten", x: 252, y: 264 },
@@ -29,14 +28,14 @@ export const cities: { [country: string]: City[] } = {
     { city: "Karlstad", region: "Värmland", x: 155, y: 430 },
   ],
   finland: [
-    { city: "Helsinki", region: "Uusimaa", x: 349, y: 375, veryBusy: true },
+    { city: "Helsinki", region: "Uusimaa", x: 349, y: 375, level: 2 },
     // { city: "Turku", region: "Southwest Finland", x: 307, y: 373 },
     { city: "Tampere", region: "Pirkanmaa", x: 324, y: 338 },
     { city: "Oulu", region: "North Ostrobothnia", x: 326, y: 214 },
   ],
   denmark: [
     { city: "Copenhagen", region: "Capital Region", x: 137, y: 560 },
-    { city: "Aarhus", region: "Central Jutland", x: 91, y: 544, veryBusy: true },
+    { city: "Aarhus", region: "Central Jutland", x: 91, y: 544, level: 2 },
     // { city: "Odense", region: "Southern Denmark", x: 97, y: 571 },
     // { city: "Aalborg", region: "North Jutland", x: 88, y: 512 },
   ],
