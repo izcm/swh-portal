@@ -11,7 +11,7 @@ type City = {
 // (scandinaviaOrthographicBounds, 600 tall)
 export const cities: { [country: string]: City[] } = {
   norway: [
-    { city: "Stavanger", region: "Rogaland", x: 12, y: 447, level: 5 },
+    { city: "Stavanger", region: "Rogaland", x: 12, y: 447, level: 4 },
     { city: "Bergen", region: "Vestland", x: 12, y: 391 },
     { city: "Oslo", region: "Oslo", x: 106, y: 412 },
     { city: "Trondheim", region: "Trøndelag", x: 102, y: 290, level: 1 },

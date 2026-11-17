@@ -7,11 +7,12 @@ import { cities } from "./map/scandinaviaCities";
 
 export function GeoVisualization({ className }: { className?: string }) {
   const viewboxHeight = 240;
-  const viewboxWidth =
-    (viewboxHeight * scandinaviaOrthographicBounds.width) /
-    scandinaviaOrthographicBounds.height;
+  // const viewboxWidth =
+  //   (viewboxHeight * scandinaviaOrthographicBounds.width) /
+  //   scandinaviaOrthographicBounds.height;
+  const viewboxWidth = 320;
 
-  const unit = layoutUnit(viewboxHeight);
+  const unit = layoutUnit(viewboxWidth);
 
   const cityMap = (() => {
     const height = viewboxHeight;
@@ -54,18 +55,28 @@ export function GeoVisualization({ className }: { className?: string }) {
     >
       {cityMap.drawing()}
       <g transform={cityMap.layout.transform}>
-        {Array.from({ length: 4 }).map((_, i) => (
+        {Array.from({ length: 2 }).map((_, i) => (
           <circle
-            r={4 + i * 5}
+            r={i * 20}
             cx={stavanger.x}
             cy={stavanger.y}
-            fill="var(--accent)"
-            opacity={i * 0.02}
+            fill="var(--accent-ink)"
+            opacity={i * 0.1}
           />
         ))}
 
         {/* <DebugPoints points={[stavanger]} color="red" radius={12} /> */}
       </g>
+      {/* debug: the viewbox's edges */}
+      <rect
+        className="svg-debug"
+        width={viewboxWidth}
+        height={viewboxHeight}
+        fill="none"
+        stroke="#aab4e6" // lavender
+        strokeWidth={0.75}
+        strokeDasharray="6 4"
+      />
     </svg>
   );
 }

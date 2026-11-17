@@ -16,7 +16,7 @@ export function IntegrationsDiagram({ className }: { className?: string }) {
   const viewboxHeight = 360;
   const angles = nodesAngles;
 
-  const { nodes, dataGrid, cube, syncArrows, connectors } = integrationsLayout({
+  const { nodes, dataGrid, cube, connectors } = integrationsLayout({
     viewboxWidth,
     viewboxHeight,
     angles,

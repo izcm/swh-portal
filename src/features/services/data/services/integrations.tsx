@@ -64,7 +64,7 @@ export const integrations: Localized<Service> = {
       title: "Nye muligheter gjennom forbedret dataflyt.",
       paragraphs: [
         "De fleste bedrifter bruker flere ulike systemer for daglig drift. Når data ikke flyter mellom disse systemene, blir informasjon liggende isolert i det vi kaller informasjonssiloer. Ved å koble sammen systemene kan data utveksles, bearbeides og kombineres på ulike måter.",
-        "Integrasjoner er ofte et naturlig første steg for bedrifter som ønsker å ta i bruk skreddersydd programvare for å forbedre sine arbeidsprosesser. De legger grunnlaget for flere av tjenestene vi tilbyr, blant annet visualisering, automatisering og interaktive verktøy.",
+        "Integrasjoner er ofte et naturlig første steg for bedrifter som ønsker å ta i bruk skreddersydd programvare. De legger grunnlaget for flere av tjenestene vi tilbyr, blant annet visualisering, automatisering og interaktive verktøy.",
         // "SWH utvikler og vedlikeholder slike koblinger.",
       ],
     },

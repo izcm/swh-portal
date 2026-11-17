@@ -19,7 +19,7 @@ import {
   type NodesShares,
 } from "./layout";
 
-const wallFill = "var(--pane-fill)";
+const wallFill = "oklch(from var(--pane-fill) l c h / 0.8)";
 const edge = "var(--accent-bright)";
 const faintEdge = "oklch(from var(--accent-bright) l c h / 0.3)";
 
@@ -91,6 +91,16 @@ export function Nodes({
           }}
         />
       </g>
+      {/* debug: the viewbox's edges */}
+      <rect
+        className="svg-debug"
+        width={viewboxWidth}
+        height={viewboxHeight}
+        fill="none"
+        stroke="#aab4e6" // lavender
+        strokeWidth={0.75}
+        strokeDasharray="6 4"
+      />
     </svg>
   );
 }

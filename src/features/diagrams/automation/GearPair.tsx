@@ -24,7 +24,7 @@ export function GearPair({ className }: { className?: string }) {
   };
 
   const bigGear = (() => {
-    const layout = gear(0.25);
+    const layout = gear(0.28);
     const translateX = 0;
     const translateY = 0;
     const drawing = () => (
@@ -48,7 +48,7 @@ export function GearPair({ className }: { className?: string }) {
     return { layout, translateX, translateY, drawing };
   })();
 
-  // both gears, centered in the viewbox
+  // both gears, as big as the viewbox allows and centered in it
   const gearPair = (() => {
     const groupWidth = smallGear.translateX + smallGear.layout.groupWidth;
 
@@ -59,11 +59,19 @@ export function GearPair({ className }: { className?: string }) {
     );
     const groupHeight = bottom - top;
 
-    const { offset: translateX } = alignCenter(viewboxWidth, groupWidth);
-    const { offset } = alignCenter(viewboxHeight, groupHeight);
-    const translateY = offset - top;
+    const scale = Math.min(
+      viewboxWidth / groupWidth,
+      viewboxHeight / groupHeight,
+    );
 
-    return { translateX, translateY };
+    const { offset: translateX } = alignCenter(
+      viewboxWidth,
+      groupWidth * scale,
+    );
+    const { offset } = alignCenter(viewboxHeight, groupHeight * scale);
+    const translateY = offset - top * scale;
+
+    return { translateX, translateY, scale };
   })();
 
   return (
@@ -76,11 +84,21 @@ export function GearPair({ className }: { className?: string }) {
       className={cn(className)}
     >
       <g
-        transform={`translate(${gearPair.translateX}, ${gearPair.translateY})`}
+        transform={`translate(${gearPair.translateX}, ${gearPair.translateY}) scale(${gearPair.scale})`}
       >
         {smallGear.drawing()}
         {bigGear.drawing()}
       </g>
+      {/* debug: the viewbox's edges */}
+      <rect
+        className="svg-debug"
+        width={viewboxWidth}
+        height={viewboxHeight}
+        fill="none"
+        stroke="#aab4e6" // lavender
+        strokeWidth={0.75}
+        strokeDasharray="6 4"
+      />
     </svg>
   );
 }

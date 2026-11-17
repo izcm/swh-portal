@@ -1,12 +1,13 @@
 import { SvgPlaceholder } from "@/components/SvgPlaceholder";
 import type { Localized } from "@/lib/context/language";
 import type { Service } from ".";
+import { InteractiveToolsDiagram } from "@/features/diagrams/interactive-tools";
 
 const shared = {
   id: "interactive-tools",
   diagrams: {
     card: <SvgPlaceholder label="Interactive Tools" width={480} height={300} />,
-    hero: <SvgPlaceholder label="Interactive Tools" width={480} height={300} />,
+    hero: <InteractiveToolsDiagram />,
   },
   example: { part: "working-with-records" },
 };
@@ -48,7 +49,7 @@ export const interactiveTools: Localized<Service> = {
       title: "Lorem ipsum",
       paragraphs: [
         "Når man bruker flere systemer, må man ofte utføre én handling i ett system og den neste i et annet for å fullføre en oppgave. Med skreddersydd programvare kan vi samle disse stegene i én prosess som brukeren kan starte direkte fra applikasjonen.",
-        "Interaktive verktøy og automatisering bygger på lignende prinsipper. Begge kan utføre forhåndsdefinerte handlinger, men forskjellen ligger i hvordan de settes i gang. Mens automatisering starter prosesser basert på bestemte regler eller faste tidspunkter, lar interaktive verktøy brukeren selv starte dem fra applikasjonen.",
+        "Interaktive verktøy og automatisering bygger på lignende prinsipper. Begge kan utføre forhåndsdefinerte handlinger, men forskjellen ligger i hvordan de settes i gang. Mens automatisering starter prosesser basert på bestemte regler eller faste tidspunkter, lar interaktive verktøy brukeren trigge dem manuelt.",
       ],
     },
     contact: { description: "Lorem ipsum", cta: "Lorem ipsum" },
