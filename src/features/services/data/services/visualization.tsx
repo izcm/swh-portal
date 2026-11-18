@@ -1,15 +1,15 @@
 import type { Localized } from "@/lib/context/language";
 import {
-  GeoVisualization,
-  VisualizationsDiagram,
+  VisualizationsCard,
+  VisualizationsHero,
 } from "../../../diagrams/visualizations";
 import type { Service } from ".";
 
 const shared = {
   id: "visualization",
   diagrams: {
-    card: <GeoVisualization />,
-    hero: <VisualizationsDiagram />,
+    card: <VisualizationsCard />,
+    hero: <VisualizationsHero />,
   },
   example: { part: "understanding-data" },
 };

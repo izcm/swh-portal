@@ -11,13 +11,19 @@ export function windowLayout({
 }) {
   const heightToWidthRatio = 0.8;
 
+  const gapXShare = 0.56;
+  const gapYShare = 0.43;
+
+  // the window width that fits itemCount windows plus their gaps in groupWidth
+  const itemWidth = groupWidth / (1 + (itemCount - 1) * gapXShare);
+
   const layout = cascadeLayout({
     groupWidth,
     heightToWidthRatio,
     angle: deg(-10),
     count: itemCount,
-    gapX: 90,
-    gapY: 70,
+    gapX: itemWidth * gapXShare,
+    gapY: itemWidth * gapYShare,
     side: "left",
   });
 

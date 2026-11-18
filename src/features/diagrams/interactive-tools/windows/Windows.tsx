@@ -1,5 +1,5 @@
 import { Fragment, useId } from "react";
-import { boundingBox, DebugPoints, smoothSegments } from "@/lib/svg";
+import { boundingBox } from "@/lib/svg";
 import { EdgeGradient } from "../../shared/gradients";
 import type { windowLayout } from "./layout";
 
@@ -10,7 +10,7 @@ export function Windows({
 }) {
   const { transform, windows, centers, unit } = layout;
 
-  const radius = 12;
+  const radius = unit * 0.33;
   const frontWindow = windows[windows.length - 1];
 
   // one connector per window, from its center to the next window's center
@@ -53,8 +53,10 @@ export function Windows({
   );
 
   const edgeGradientId = useId();
+
   const groundGradient = useId();
   const windowFillGradient = useId();
+
   const strokeGradient = useId();
   const strokeGradientFlipped = useId();
 
@@ -85,7 +87,11 @@ export function Windows({
         </linearGradient>
 
         <linearGradient id={strokeGradient}>
-          <stop offset="0%" stopColor="var(--accent-bright)" />
+          <stop
+            offset="0%"
+            stopColor="var(--accent-bright)"
+            stopOpacity={0.85}
+          />
           <stop
             offset="100%"
             stopColor="var(--accent-bright)"
@@ -117,7 +123,10 @@ export function Windows({
                   ? "var(--accent-bright)"
                   : `url(#${strokeGradient})`
               }
-              strokeWidth={1}
+              strokeWidth={i === windows.length - 1 ? 1 : 1.2}
+              // Prevent thin strokes from disappearing at certain screen sizes
+              // due to SVG scaling and subpixel anti-aliasing.
+              vectorEffect="non-scaling-stroke"
               opacity={opacity}
             />
           </g>
@@ -133,8 +142,11 @@ export function Windows({
                   rx={radius}
                   fill={`url(#${groundGradient})`}
                   stroke={`url(#${strokeGradientFlipped})`}
-                  strokeWidth={1}
+                  strokeWidth={1.2}
                   opacity={1}
+                  // Prevent thin strokes from disappearing at certain screen sizes
+                  // due to SVG scaling and subpixel anti-aliasing.
+                  vectorEffect="non-scaling-stroke"
                 />
               );
             })()}

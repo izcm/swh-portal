@@ -1,21 +1,12 @@
 import type { Localized } from "@/lib/context/language";
-import { IntegrationsDiagram, Nodes } from "../../../diagrams/integrations";
+import { IntegrationsCard, IntegrationsHero } from "../../../diagrams/integrations";
 import type { Service } from ".";
 
 const shared = {
   id: "integrations",
   diagrams: {
-    card: (
-      <Nodes
-        width="100%"
-        height="100%"
-        viewboxWidth={320}
-        viewboxHeight={240}
-        strokeWidth={1}
-        shares={{ nodes: 1 / 3, connectors: 1 / 3, cube: 1 / 3 }}
-      />
-    ),
-    hero: <IntegrationsDiagram />,
+    card: <IntegrationsCard />,
+    hero: <IntegrationsHero />,
   },
   example: { part: "connecting-systems" },
 };

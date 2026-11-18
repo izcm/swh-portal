@@ -19,8 +19,8 @@ import {
   type NodesShares,
 } from "./layout";
 
-const wallFill = "oklch(from var(--pane-fill) l c h / 0.8)";
-const edge = "var(--accent-ink)";
+const wallFill = "oklch(from var(--pane-fill) l c h / 1)";
+const edge = "var(--accent-bright)";
 const faintEdge = "oklch(from var(--accent-bright) l c h / 0.3)";
 
 export function Nodes({

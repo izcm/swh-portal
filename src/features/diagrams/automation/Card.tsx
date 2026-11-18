@@ -1,7 +1,7 @@
 import { cn } from "@/lib/cn";
 import { alignCenter, deg, Gear, gearLayout } from "@/lib/svg";
 
-export function GearPair({ className }: { className?: string }) {
+export function AutomationCard({ className }: { className?: string }) {
   const viewboxWidth = 320;
   const viewboxHeight = 240;
 
@@ -80,7 +80,7 @@ export function GearPair({ className }: { className?: string }) {
       width="100%"
       height="100%"
       overflow="visible"
-      preserveAspectRatio="xMidYMid meet"
+      // preserveAspectRatio="xMidYMid meet"
       className={cn(className)}
     >
       <g

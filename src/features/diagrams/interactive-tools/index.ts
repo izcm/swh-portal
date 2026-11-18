@@ -1,1 +1,2 @@
-export { InteractiveToolsDiagram } from "./Diagram";
+export { InteractiveToolsHero } from "./Hero";
+export { InteractiveToolsCard } from "./Card";

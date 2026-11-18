@@ -1,12 +1,12 @@
 import type { Localized } from "@/lib/context/language";
-import { AutomationDiagram, GearPair } from "../../../diagrams/automation";
+import { AutomationCard, AutomationHero } from "../../../diagrams/automation";
 import type { Service } from ".";
 
 const shared = {
   id: "automation",
   diagrams: {
-    card: <GearPair />,
-    hero: <AutomationDiagram />,
+    card: <AutomationCard />,
+    hero: <AutomationHero />,
   },
   example: { part: "automating-updates" },
 };

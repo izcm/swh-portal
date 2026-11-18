@@ -11,7 +11,7 @@ import { nodesAngles } from "./nodes/layout";
 import { DataGrid } from "./DataGrid";
 import { integrationsLayout } from "./layout";
 
-export function IntegrationsDiagram({ className }: { className?: string }) {
+export function IntegrationsHero({ className }: { className?: string }) {
   const viewboxWidth = 540;
   const viewboxHeight = 360;
   const angles = nodesAngles;

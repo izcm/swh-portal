@@ -5,7 +5,7 @@ import { cityMapLayout } from "./map/cityMapLayout";
 import { scandinaviaOrthographicBounds } from "./map/ScandinaviaOrthographic";
 import { cities } from "./map/scandinaviaCities";
 
-export function GeoVisualization({ className }: { className?: string }) {
+export function VisualizationsCard({ className }: { className?: string }) {
   const viewboxHeight = 240;
   // const viewboxWidth =
   //   (viewboxHeight * scandinaviaOrthographicBounds.width) /
@@ -54,7 +54,7 @@ export function GeoVisualization({ className }: { className?: string }) {
       className={cn(className)}
     >
       {cityMap.drawing()}
-      <g transform={cityMap.layout.transform}>
+      {/* <g transform={cityMap.layout.transform}>
         {Array.from({ length: 2 }).map((_, i) => (
           <circle
             r={i * 20}
@@ -64,9 +64,7 @@ export function GeoVisualization({ className }: { className?: string }) {
             opacity={i * 0.1}
           />
         ))}
-
-        {/* <DebugPoints points={[stavanger]} color="red" radius={12} /> */}
-      </g>
+      </g> */}
       {/* debug: the viewbox's edges */}
       <rect
         className="svg-debug"

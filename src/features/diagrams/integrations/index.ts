@@ -1,2 +1,2 @@
-export { IntegrationsDiagram } from "./Diagram";
-export { Nodes } from "./nodes/Nodes";
+export { IntegrationsHero } from "./Hero";
+export { IntegrationsCard } from "./Card";

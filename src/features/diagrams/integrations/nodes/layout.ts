@@ -39,7 +39,7 @@ export function nodesLayout({
   shares: NodesShares;
 }) {
   const unit = layoutUnit(height);
-  const radius = 3;
+  const radius = 8;
 
   // left to right: the nodes, the connectors, the cube
   const columns = (() => {

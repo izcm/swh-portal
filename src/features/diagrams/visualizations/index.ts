@@ -1,2 +1,2 @@
-export { VisualizationsDiagram } from "./Diagram";
-export { GeoVisualization } from "./GeoVisualization";
+export { VisualizationsHero } from "./Hero";
+export { VisualizationsCard } from "./Card";

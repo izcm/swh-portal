@@ -1,13 +1,16 @@
 import { SvgPlaceholder } from "@/components/SvgPlaceholder";
 import type { Localized } from "@/lib/context/language";
 import type { Service } from ".";
-import { InteractiveToolsDiagram } from "@/features/diagrams/interactive-tools";
+import {
+  InteractiveToolsCard,
+  InteractiveToolsHero,
+} from "@/features/diagrams/interactive-tools";
 
 const shared = {
   id: "interactive-tools",
   diagrams: {
-    card: <SvgPlaceholder label="Interactive Tools" width={480} height={300} />,
-    hero: <InteractiveToolsDiagram />,
+    card: <InteractiveToolsCard />,
+    hero: <InteractiveToolsHero />,
   },
   example: { part: "working-with-records" },
 };
