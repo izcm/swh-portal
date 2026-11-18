@@ -36,12 +36,7 @@ type PlatformProps = Partial<Point> &
 
 // a platform where each roof edge has its own length.
 // drawn in real units (no 100-wide box, no scale)
-export function Platform({
-  x = 0,
-  y = 0,
-  grid,
-  ...shape
-}: PlatformProps) {
+export function Platform({ x = 0, y = 0, grid, ...shape }: PlatformProps) {
   const { thickness } = shape;
   const { roof } = boxCorners(shape);
 

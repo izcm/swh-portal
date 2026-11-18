@@ -1,6 +1,6 @@
-import { accentGlow, ISOCube, isoCubeMetrics, type BoxLook } from "@/lib/svg";
+import { ISOCube, isoCubeMetrics, type BoxLook } from "@/lib/svg";
 import { CubeBase } from "./CubeBase";
-import { glassCube, glassGlow } from "../glass";
+import { glassCube } from "../glass";
 
 export function cubeStackLayout(size: number) {
   const cube = isoCubeMetrics(size);
@@ -51,7 +51,7 @@ export function CubeStack({
           } as React.CSSProperties
         }
       >
-        <g style={{ filter: accentGlow(glassGlow.blur, glassGlow.strength) }}>
+        <g>
           <ISOCube
             {...glassCube}
             strokes={strokes}

@@ -1,11 +1,10 @@
 import {
-  accentGlow,
   allFills,
   ISOCube,
   isoCubeMetrics,
   type BoxLook,
 } from "@/lib/svg";
-import { glassCube, glassGlow } from "../glass";
+import { glassCube } from "../glass";
 
 // the shared 2x2 base, drawn top to bottom. y = where the top cube sits
 export function CubeBase({
@@ -21,7 +20,7 @@ export function CubeBase({
   const half = size / 2;
 
   return (
-    <g style={{ filter: accentGlow(glassGlow.blur, glassGlow.strength) }}>
+    <g>
       <ISOCube
         {...glassCube}
         strokes={strokes}

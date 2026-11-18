@@ -1,7 +1,6 @@
 import { useId } from "react";
 
 import {
-  accent,
   accentGlow,
   allStrokes,
   BoxBody,
@@ -12,7 +11,7 @@ import {
   type Point,
 } from "@/lib/svg";
 import { EdgeGradient } from "../../shared/gradients";
-import { glassCube, glassEdgeOpacity, glassGlow } from "../glass";
+import { glassCube, glassEdgeOpacity } from "../glass";
 import { platformStyle } from "../platform/Platform";
 
 type IsoMetrics = ReturnType<typeof isoCubeMetrics>;
@@ -37,24 +36,24 @@ export function BoxedCube({
 }) {
   const bigCubeEdgeId = useId();
   const bigCubeEdge = `url(#${bigCubeEdgeId})`;
-  const bigCubeGlow = accentGlow(
+  const bigCubeGlow = `var(--boxed-cube-glow, ${accentGlow(
     platformStyle.glow.blur,
     platformStyle.glow.strength,
-  );
+  )})`;
 
   // was / 0.8 drawn twice; one layer at 0.96 looks the same
-  const floatingCubeEdge = "var(--accent-bright)";
+  const floatingCubeEdge = "var(--floating-cube-edge)";
 
   const floatingCubeFills = {
-    roof: accent(0.5),
-    left: accent(0.45),
-    right: accent(0.55),
+    roof: "var(--floating-cube-roof)",
+    left: "var(--floating-cube-left)",
+    right: "var(--floating-cube-right)",
     floor: [],
   };
 
-  const bigCubeLeftTint = accent(0.06);
-  const bigCubeRightTint = accent(0.08);
-  const bigCubeRoofTint = accent(0.04);
+  const bigCubeLeftTint = "var(--boxed-cube-left)";
+  const bigCubeRightTint = "var(--boxed-cube-right)";
+  const bigCubeRoofTint = "var(--boxed-cube-roof)";
 
   const cornerMaskId = useId();
 
@@ -88,7 +87,7 @@ export function BoxedCube({
         <BoxBody
           roof={bigCubeRoof}
           thickness={bigCube.thickness}
-          strokeWidth={1}
+          strokeWidth={0.75}
           radius={2}
           fills={{ floor: "var(--pane-fill)" }}
           strokes={{
@@ -111,7 +110,7 @@ export function BoxedCube({
       />
 
       <g className="float-bob">
-        <g style={{ filter: accentGlow(glassGlow.blur, glassGlow.strength) }}>
+        <g>
           <ISOCube
             {...glassCube}
             x={smallCubePos.x}
@@ -128,14 +127,18 @@ export function BoxedCube({
         <BoxBody
           roof={bigCubeRoof}
           thickness={bigCube.thickness}
-          strokeWidth={platformStyle.strokeWidth}
+          strokeWidth={0.4}
           radius={2}
           fills={{
             roof: bigCubeRoofTint,
             left: bigCubeLeftTint,
             right: bigCubeRightTint,
           }}
-          strokes={{ ...allStrokes(bigCubeEdge), back: [], floorTop: [] }}
+          strokes={{
+            ...allStrokes("var(--accent)"),
+            back: [],
+            floorTop: [],
+          }}
         />
       </g>
 

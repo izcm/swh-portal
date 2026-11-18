@@ -4,22 +4,23 @@ import { cn } from "@/lib/cn";
 import {
   addVector,
   boxCorners,
-  isoFloorCenter,
   isoCubeMetrics,
+  isoFloorCenter,
   isoRoofCenter,
   paddedBox,
   scaleVector,
   standOn,
   type Point,
 } from "@/lib/svg";
+
 import { Floor } from "../shared/floor/Floor";
 import { EdgeGradient } from "../shared/gradients";
-import { BoxedCube } from "./cubes/BoxedCube";
+
 import { ConnectorRing } from "./ConnectorRing";
-import { CubeStack, cubeStackLayout } from "./cubes/CubeStack";
+import { BoxedCube, CubeStack, cubeStackLayout } from "./cubes";
 import { softwareFloorLayout, softwareFloorLook } from "./floor";
 import { glassEdgeOpacity } from "./glass";
-import { PlatformCubes } from "./platform/PlatformCubes";
+import { PlatformCubes } from "./platform";
 
 export function SoftwareDiagram({ className }: { className?: string }) {
   const viewboxWidth = 500;

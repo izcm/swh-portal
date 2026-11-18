@@ -3,7 +3,7 @@ import { useId } from "react";
 import { accentGlow } from "../logic";
 import type { gearLayout } from "../layouts";
 
-const wallGray = "oklch(from var(--accent) 0.38 0.03 h)";
+const wallGray = "oklch(from var(--accent-faint) l c h / 1)";
 
 // a gear: a dark front face with a bright outline and a ring around the hole,
 // gray walls and back face lit from above, and a soft glow.

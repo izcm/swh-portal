@@ -1,0 +1,22 @@
+:root {
+  --glass-base: var(--accent);
+
+  --glass-roof: color-mix(in oklab, var(--glass-base) 14%, transparent);
+  --glass-left: color-mix(in oklab, var(--glass-base) 28%, transparent);
+  --glass-right: color-mix(in oklab, var(--glass-base) 42%, transparent);
+
+  --floating-cube-roof: color-mix(in oklab, var(--glass-base) 30%, transparent);
+  --floating-cube-left: color-mix(in oklab, var(--glass-base) 45%, transparent);
+  --floating-cube-right: color-mix(in oklab, var(--glass-base) 60%, transparent);
+
+  --boxed-cube-roof: color-mix(in oklab, var(--glass-base) 3%, transparent);
+  --boxed-cube-left: color-mix(in oklab, var(--glass-base) 7%, transparent);
+  --boxed-cube-right: color-mix(in oklab, var(--glass-base) 11%, transparent);
+  --floating-cube-edge: var(--accent-bright);
+}
+
+:root[data-theme="light"] {
+  --glass-base: white;
+  --boxed-cube-glow: none;
+  --floating-cube-edge: color-mix(in oklab, var(--accent) 50%, transparent);
+}

@@ -1,12 +1,11 @@
 import {
-  accentGlow,
   ISOCube,
   IsoCubeShadow,
   isoCubeMetrics,
   type BoxLook,
 } from "@/lib/svg";
 import { CubeBase } from "../cubes/CubeBase";
-import { glassCube, glassGlow } from "../glass";
+import { glassCube } from "../glass";
 import { Platform } from "./Platform";
 
 type IsoMetrics = ReturnType<typeof isoCubeMetrics>;
@@ -77,7 +76,7 @@ export function PlatformCubes({
           <CubeBase size={cubeSize} y={rise} strokes={strokes} />
 
           {/* TOP ROW — two cubes on the top cells */}
-          <g style={{ filter: accentGlow(glassGlow.blur, glassGlow.strength) }}>
+          <g>
             <ISOCube
               {...glassCube}
               strokes={strokes}
