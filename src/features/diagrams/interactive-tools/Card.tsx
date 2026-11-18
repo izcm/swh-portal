@@ -8,10 +8,13 @@ export function InteractiveToolsCard({ className }: { className?: string }) {
   const viewboxHeight = 240;
 
   const windows = (() => {
+    const groupWidth = viewboxWidth * 0.85;
+
     const layout = windowLayout({
-      groupWidth: viewboxWidth * 0.8,
+      groupWidth,
       boundedHeight: viewboxHeight,
       itemCount: 3,
+      exitEndX: viewboxWidth,
     });
 
     const drawing = () => <Windows layout={layout} />;

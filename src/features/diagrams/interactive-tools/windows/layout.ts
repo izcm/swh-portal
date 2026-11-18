@@ -1,13 +1,15 @@
-import { cascadeLayout, deg, layoutUnit } from "@/lib/svg";
+import { cascadeLayout, deg, layoutUnit, pointOnLine } from "@/lib/svg";
 
 export function windowLayout({
   groupWidth,
   boundedHeight,
   itemCount,
+  exitEndX,
 }: {
   groupWidth: number;
   boundedHeight: number;
   itemCount: number;
+  exitEndX?: number;
 }) {
   const heightToWidthRatio = 0.8;
 
@@ -81,12 +83,31 @@ export function windowLayout({
     y: y + height * 0.5,
   }));
 
+  // in the windows' own space, so it scales with them
+  const unit = layoutUnit(groupWidth);
+
+  // a line out of the front window, in the same direction as the connectors,
+  // ending where the check mark's right edge touches exitEndX in the viewbox
+  const exit = (() => {
+    if (exitEndX === undefined) return undefined;
+
+    const radius = unit * 0.75;
+    const from = centers[centers.length - 2];
+    const to = centers[centers.length - 1];
+
+    // the windows' transform only scales x (skewY leaves x alone), so undo the scale
+    const endX = (exitEndX - translateX) / scale - radius;
+    const t = (endX - from.x) / (to.x - from.x);
+
+    return { start: to, end: pointOnLine(from, to, t), radius };
+  })();
+
   return {
     transform: `translate(${translateX}, 0) scale(${scale}) ${layout.transform}`,
     windows,
     centers,
     absoluteCenters,
-    // in the windows' own space, so it scales with them
-    unit: layoutUnit(groupWidth),
+    exit,
+    unit,
   };
 }
