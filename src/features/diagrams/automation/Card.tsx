@@ -18,7 +18,7 @@ export function AutomationCard({ className }: { className?: string }) {
       toothLean: deg(20),
       holeRadius,
       holeRingRadius: holeRadius * 1.2,
-      depth: radius * 0.15,
+      depth: radius * 0.1,
       tilt: deg(-10),
     });
   };

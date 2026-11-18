@@ -47,7 +47,7 @@ export function AutomationHero({ className }: { className?: string }) {
       toothLean: deg(20), // knob
       holeRadius,
       holeRingRadius: holeRadius * 1.2, // knob
-      depth: radius * 0.2, // knob
+      depth: radius * 0.15, // knob
       tilt: deg(-20), // knob
     });
   };

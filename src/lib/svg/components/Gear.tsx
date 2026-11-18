@@ -30,13 +30,9 @@ export function Gear({
           cy={center.y - radius * 1.2}
           r={radius * 2.6}
         >
-          <stop offset="0%" stopColor="var(--accent-ink)" stopOpacity={0.8} />
-          <stop offset="50%" stopColor="var(--accent-ink)" stopOpacity={0.65} />
-          <stop
-            offset="100%"
-            stopColor="var(--accent-ink)"
-            stopOpacity={0.45}
-          />
+          <stop offset="0%" stopColor="var(--pane-fill)" stopOpacity={0.6} />
+          <stop offset="50%" stopColor="var(--pane-fill)" stopOpacity={0.45} />
+          <stop offset="100%" stopColor="var(--pane-fill)" stopOpacity={0.3} />
         </radialGradient>
       </defs>
 
