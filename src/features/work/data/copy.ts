@@ -29,6 +29,7 @@ export const copy: Localized<{
     eyebrow: string;
     heading: string;
     description: string;
+    comingSoon: string;
   };
 }> = {
   en: {
@@ -62,6 +63,7 @@ export const copy: Localized<{
       heading: "Technical summary",
       description:
         "How the application is put together, and how the different parts work together.",
+      comingSoon: "Coming soon",
     },
   },
   no: {
@@ -96,6 +98,7 @@ export const copy: Localized<{
       heading: "Teknisk oppsummering",
       description:
         "Hvordan applikasjonen er satt sammen, og hvordan de ulike delene fungerer sammen.",
+      comingSoon: "Kommer snart",
     },
   },
 };

@@ -45,20 +45,24 @@ export function TechnicalSummary({
           {t.technical.description}
         </p>
 
-        <RoundIconBtn
-          onClick={() => setOpen(!open)}
-          disabled
-          className={cn(
-            "btn size-12 border border-line bg-raised",
-            "hover:bg-ground hover:border-accent",
-            "self-end md:self-auto md:ml-auto md:mr-8",
-          )}
-        >
-          <ArrowDown
-            className={cn("size-5 transition-transform", open && "rotate-180")}
-            strokeWidth={1.5}
-          />
-        </RoundIconBtn>
+        <div className="flex items-center gap-3 self-end md:self-auto md:ml-auto md:mr-8">
+          <span className="eyebrow font-mono text-xs">
+            {t.technical.comingSoon}
+          </span>
+          <RoundIconBtn
+            onClick={() => setOpen(!open)}
+            disabled
+            className={cn(
+              "btn size-12 border border-line bg-raised",
+              "hover:bg-ground hover:border-accent",
+            )}
+          >
+            <ArrowDown
+              className={cn("size-5 transition-transform", open && "rotate-180")}
+              strokeWidth={1.5}
+            />
+          </RoundIconBtn>
+        </div>
       </div>
 
       {open && <TechnicalParts parts={parts} labels={t.showcase} />}

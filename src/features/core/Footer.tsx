@@ -27,7 +27,7 @@ export default function Footer() {
         SWH
       </Link>
 
-      <nav className="flex items-center gap-6">
+      <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
         {links.map(({ to, label }) => (
           <Link key={label} to={to} className="btn btn-ghost">
             {label}
