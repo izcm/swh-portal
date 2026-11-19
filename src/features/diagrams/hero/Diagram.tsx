@@ -47,7 +47,7 @@ export function HeroDiagram({ className }: { className?: string }) {
     const drawing = (
       <Floor
         layout={layout}
-        tileOpacity={0.35}
+        tileOpacity={0.2}
         fadeStretchX={1}
         fadeStart={0.15}
         fadeMiddle={0.5}
