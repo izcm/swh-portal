@@ -91,8 +91,8 @@ export function BoxedCube({
           radius={2}
           fills={{ floor: "var(--pane-fill)" }}
           strokes={{
-            back: "var(--accent-faint)",
-            floorTop: "var(--accent-faint)",
+            back: "var(--accent-dim)",
+            floorTop: "var(--accent-dim)",
           }}
         />
       </g>
@@ -127,15 +127,15 @@ export function BoxedCube({
         <BoxBody
           roof={bigCubeRoof}
           thickness={bigCube.thickness}
-          strokeWidth={0.4}
-          radius={2}
+          strokeWidth={0.85}
+          radius={1}
           fills={{
             roof: bigCubeRoofTint,
             left: bigCubeLeftTint,
             right: bigCubeRightTint,
           }}
           strokes={{
-            ...allStrokes("var(--accent)"),
+            ...allStrokes("var(--accent-dim)"),
             back: [],
             floorTop: [],
           }}

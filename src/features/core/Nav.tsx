@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@a2zb/react";
 
 import { cn } from "@/lib/cn";
 import { useLanguage } from "@/lib/context/language";
+
+import { PairToggle } from "@/components/PairToggle";
 import { ContactModal } from "../contact";
 import { copy } from "./copy";
 
 export default function Nav() {
   const [contactOpen, setContactOpen] = useState(false);
   const { lang, setLang } = useLanguage();
+  const { theme, applyTheme } = useTheme();
   const t = copy[lang];
 
   const tabs = [
@@ -54,15 +59,23 @@ export default function Nav() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setLang(lang === "no" ? "en" : "no")}
-          className="btn btn-ghost text-sm tracking-wide"
-        >
-          <span className={lang === "no" ? "text-fg" : "text-muted"}>NO</span>
-          {" / "}
-          <span className={lang === "en" ? "text-fg" : "text-muted"}>EN</span>
-        </button>
+        <PairToggle
+          value={lang}
+          onChange={setLang}
+          options={[
+            { value: "no", label: "NO" },
+            { value: "en", label: "EN" },
+          ]}
+        />
+
+        <PairToggle
+          value={theme}
+          onChange={applyTheme}
+          options={[
+            { value: "light", label: <Sun size={14} /> },
+            { value: "dark", label: <Moon size={14} /> },
+          ]}
+        />
 
         <button
           type="button"

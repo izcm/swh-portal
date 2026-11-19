@@ -14,7 +14,7 @@ export default function Hero() {
     <section
       className={cn(
         "flex flex-1 flex-col justify-start gap-0",
-        "w-full mt-24 px-4",
+        "w-full mt-12 px-4",
 
         // responsive
         "xl:px-0",
@@ -63,7 +63,7 @@ export default function Hero() {
         className={cn(
           "w-full max-w-65 mt-24 mx-auto",
           "md:max-w-85",
-          "xl:min-w-0 xl:max-w-90 xl:flex-1 xl:mt-16",
+          "xl:min-w-0 xl:max-w-90 xl:flex-1 xl:mt-12",
         )}
       >
         <HeroDiagram />

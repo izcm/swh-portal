@@ -7,7 +7,11 @@
 
   --floating-cube-roof: color-mix(in oklab, var(--glass-base) 30%, transparent);
   --floating-cube-left: color-mix(in oklab, var(--glass-base) 45%, transparent);
-  --floating-cube-right: color-mix(in oklab, var(--glass-base) 60%, transparent);
+  --floating-cube-right: color-mix(
+    in oklab,
+    var(--glass-base) 60%,
+    transparent
+  );
 
   --boxed-cube-roof: color-mix(in oklab, var(--glass-base) 3%, transparent);
   --boxed-cube-left: color-mix(in oklab, var(--glass-base) 7%, transparent);
@@ -16,7 +20,7 @@
 }
 
 :root[data-theme="light"] {
-  --glass-base: white;
+  --glass-base: color-mix(in oklab, var(--accent) 15%, white);
   --boxed-cube-glow: none;
   --floating-cube-edge: color-mix(in oklab, var(--accent) 50%, transparent);
 }
