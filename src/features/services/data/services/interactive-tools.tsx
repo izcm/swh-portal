@@ -1,4 +1,3 @@
-import { SvgPlaceholder } from "@/components/SvgPlaceholder";
 import type { Localized } from "@/lib/context/language";
 import type { Service } from ".";
 import {
